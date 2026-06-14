@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M·D Style — Bijoux & Montres de Luxe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * , *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --or: #C9A84C;
+    --or-light: #E8C97A;
+    --or-dark: #8B6914;
+    --creme: #F5F0E8;
+    --noir: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --gris: #888888;
+    --blanc: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--creme);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { max-width: 100%; display: block; }
+
+  /* HEADER */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 18px 20px;
+    text-align: center;
+  }
+
+  header .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--or);
+  }
+
+  header .logo span {
+    color: var(--creme);
+  }
+
+  header .tagline {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gris);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--or-light);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .hero p {
+    color: var(--gris);
+    font-size: 14px;
+    max-width: 320px;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+  }
+
+  .hero .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--or);
+    margin: 20px auto;
+  }
+
+  /* NAV CATEGORIES */
+  .cat-nav {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .cat-nav::-webkit-scrollbar { display: none; }
+
+  .cat-nav a {
+    flex-shrink: 0;
+    padding: 8px 18px;
+    border: 1px solid var(--or-dark);
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--or-light);
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+  .cat-nav a:active, .cat-nav a:hover {
+    background: var(--or);
+    color: var(--noir);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 50px 20px 20px;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--or-light);
+    letter-spacing: 2px;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--gris);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+
+  .price-note {
+    text-align: center;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--or-light);
+    max-width: 480px;
+    margin: 0 auto 30px;
+    letter-spacing: 0.3px;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* PRODUCT CARD */
+  .card {
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+
+  .card:active {
+    border-color: var(--or);
+    transform: scale(0.98);
+  }
+
+  .card .img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--dark);
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-body {
+    padding: 12px 12px 16px;
+  }
+
+  .card-body h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--creme);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    min-height: 38px;
+  }
+
+  .card-body .price {
+    color: var(--or);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .card-body .price-alt {
+    color: var(--gris);
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+  }
+
+  .order-btn {
+    display: block;
+    text-align: center;
+    background: var(--or);
+    color: var(--noir);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+
+  .order-btn:active {
+    background: var(--or-light);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 50px 20px 40px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    margin-top: 40px;
+  }
+
+  footer .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--or);
+    margin-bottom: 14px;
+  }
+
+  footer .contact {
+    color: var(--creme);
+    font-size: 14px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  footer .contact span {
+    color: var(--or-light);
+    font-weight: 600;
+  }
+
+  footer .location {
+    color: var(--gris);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 14px;
+  }
+
+  .float-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    z-index: 200;
+  }
+
+  .float-whatsapp svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">M<span>·</span>D STYLE</div>
+  <div class="tagline">Bijoux & Montres de Luxe</div>
+</header>
+
+<div class="hero">
+  <h1>L'Élégance à Brazzaville</h1>
+  <div class="divider"></div>
+  <p>Découvrez notre collection exclusive de montres et bijoux. Commandez directement via WhatsApp.</p>
+</div>
+
+<nav class="cat-nav">
+  <a href="#montres">Montres</a>
+  <a href="#sets">Sets Bijoux</a>
+  <a href="#chainettes">Chaînettes</a>
+  <a href="#bracelets">Bracelets Perlés</a>
+</nav>
+
+<!-- MONTRES -->
+<section class="section" id="montres">
+  <div class="section-title"><h2>Montres</h2></div>
+  <div class="section-subtitle">Collection Homme & Femme</div>
+  <div class="price-note">
+    1 à 2 montres : <strong>8 000 FCFA</strong>/pièce &nbsp;|&nbsp; À partir de 3 montres : <strong>6 000 FCFA</strong>/pièce
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/20JoSJj.jpeg" alt="Montre Chanel"></div>
+      <div class="card-body">
+        <h3>Montre Chanel</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Chanel%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/UbcIYCi.jpeg" alt="Montre Cœur Guess"></div>
+      <div class="card-body">
+        <h3>Montre Cœur Guess</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20C%C5%93ur%20Guess%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/yjGcX8R.jpeg" alt="Montre Versace"></div>
+      <div class="card-body">
+        <h3>Montre Versace</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Versace%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/WJiwQqc.jpeg" alt="Montre Versace"></div>
+      <div class="card-body">
+        <h3>Montre Versace</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Versace%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/9ezRDEt.jpeg" alt="Montre Versace Méduse"></div>
+      <div class="card-body">
+        <h3>Montre Versace Méduse</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Versace%20M%C3%A9duse%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/IOriqHb.jpeg" alt="Montre Camelot"></div>
+      <div class="card-body">
+        <h3>Montre Camelot</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Camelot%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/3NHN2T2.jpeg" alt="Montre Camelot"></div>
+      <div class="card-body">
+        <h3>Montre Camelot</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Camelot%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/XAhlVxK.jpeg" alt="Montre Camelot"></div>
+      <div class="card-body">
+        <h3>Montre Camelot</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Camelot%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/QZEZHmB.jpeg" alt="Montre Camelot Classic"></div>
+      <div class="card-body">
+        <h3>Montre Camelot Classic</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Camelot%20Classic%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/BjPaTct.jpeg" alt="Montre Louis Vuitton"></div>
+      <div class="card-body">
+        <h3>Montre Louis Vuitton</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Louis%20Vuitton%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/hGqojvV.jpeg" alt="Montre Louis Vuitton"></div>
+      <div class="card-body">
+        <h3>Montre Louis Vuitton</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Louis%20Vuitton%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/yDR67Oh.jpeg" alt="Montre Calvin Klein"></div>
+      <div class="card-body">
+        <h3>Montre Calvin Klein</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Calvin%20Klein%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/nfhw4zb.jpeg" alt="Montre Calvin Klein"></div>
+      <div class="card-body">
+        <h3>Montre Calvin Klein</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Calvin%20Klein%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/H984BBI.jpeg" alt="Montre Daniel Wellington"></div>
+      <div class="card-body">
+        <h3>Montre Daniel Wellington ❤️</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Daniel%20Wellington%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/iJGHNj0.jpeg" alt="Montre Chanel Crystal"></div>
+      <div class="card-body">
+        <h3>Montre Chanel Crystal</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Chanel%20Crystal%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/dUAKwS0.jpeg" alt="Montre Chanel"></div>
+      <div class="card-body">
+        <h3>Montre Chanel</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Chanel%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/YpIplbo.jpeg" alt="Montre Movado Élégance"></div>
+      <div class="card-body">
+        <h3>Montre Movado Élégance</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Movado%20%C3%89l%C3%A9gance%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/sKLuoSO.jpeg" alt="Montre Rolex"></div>
+      <div class="card-body">
+        <h3>Montre Rolex</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Rolex%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/HeaO3Fp.jpeg" alt="Montre MK"></div>
+      <div class="card-body">
+        <h3>Montre Michael Kors</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Michael%20Kors%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/FRrvFWJ.jpeg" alt="Montre Dior"></div>
+      <div class="card-body">
+        <h3>Montre Dior</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Dior%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/1snakhe.jpeg" alt="Montre Dior"></div>
+      <div class="card-body">
+        <h3>Montre Dior</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Dior%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/il2sptj.jpeg" alt="Montre Hermès"></div>
+      <div class="card-body">
+        <h3>Montre Hermès</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">6 000 FCFA à partir de 3 pièces</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Herm%C3%A8s%20(8%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/aSGD9Go.jpeg" alt="Montre Carreras CR7"></div>
+      <div class="card-body">
+        <h3>Montre Carreras CR7</h3>
+        <div class="price">18 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Carreras%20CR7%20(18%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/86FmqfI.jpeg" alt="Montre Carreras CR7"></div>
+      <div class="card-body">
+        <h3>Montre Carreras CR7</h3>
+        <div class="price">18 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Montre%20Carreras%20CR7%20(18%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/2MC5mUo.jpeg" alt="Smart Watch Ultra"></div>
+      <div class="card-body">
+        <h3>Smart Watch Ultra</h3>
+        <div class="price">22 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Smart%20Watch%20Ultra%20(22%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SETS BIJOUX -->
+<section class="section" id="sets">
+  <div class="section-title"><h2>Sets Bijoux</h2></div>
+  <div class="section-subtitle">Colliers, Bracelets & Boucles assortis</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/blycqfJ.jpeg" alt="Set Trèfle"></div>
+      <div class="card-body">
+        <h3>Set Trèfle</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Tr%C3%A8fle%20(8%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/gFW6PkD.jpeg" alt="Set Trèfle"></div>
+      <div class="card-body">
+        <h3>Set Trèfle</h3>
+        <div class="price">8 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Tr%C3%A8fle%20(8%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/s0VnPji.jpeg" alt="Set Versace"></div>
+      <div class="card-body">
+        <h3>Set Versace</h3>
+        <div class="price">10 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Versace%20(10%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/BallGvj.jpeg" alt="Set Versace"></div>
+      <div class="card-body">
+        <h3>Set Versace</h3>
+        <div class="price">10 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Versace%20(10%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/oaQJhhS.jpeg" alt="Set Versace"></div>
+      <div class="card-body">
+        <h3>Set Versace</h3>
+        <div class="price">10 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Versace%20(10%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/nxaHiMv.jpeg" alt="Set Versace Méduse"></div>
+      <div class="card-body">
+        <h3>Set Versace Méduse</h3>
+        <div class="price">10 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Versace%20M%C3%A9duse%20(10%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/NmoYTtU.jpeg" alt="Set Cartier"></div>
+      <div class="card-body">
+        <h3>Set Cartier</h3>
+        <div class="price">10 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Cartier%20(10%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/6wVmXeX.jpeg" alt="Set L'Infini"></div>
+      <div class="card-body">
+        <h3>Set L'Infini</h3>
+        <div class="price">10 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20L'Infini%20(10%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/H3we7DM.jpeg" alt="Set Bijoux"></div>
+      <div class="card-body">
+        <h3>Set Bijoux</h3>
+        <div class="price">5 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Bijoux%20(5%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/iagpLhU.jpeg" alt="Set Chaîne et Boucle Élégance"></div>
+      <div class="card-body">
+        <h3>Set Chaîne & Boucle Élégance</h3>
+        <div class="price">6 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Set%20Cha%C3%AEne%20%26%20Boucle%20%C3%89l%C3%A9gance%20(6%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/GrPAGff.jpeg" alt="Complet Perle"></div>
+      <div class="card-body">
+        <h3>Complet Perle</h3>
+        <div class="price">5 000 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Complet%20Perle%20(5%20000%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/TQUPBwW.jpeg" alt="Bracelet Élégance"></div>
+      <div class="card-body">
+        <h3>Bracelet Élégance</h3>
+        <div class="price">1 500 FCFA</div>
+        <div class="price-alt">&nbsp;</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Bracelet%20%C3%89l%C3%A9gance%20(1%20500%20FCFA).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHAINETTES -->
+<section class="section" id="chainettes">
+  <div class="section-title"><h2>Chaînettes</h2></div>
+  <div class="section-subtitle">Acier inoxydable, longue</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/Cxwzod3.jpeg" alt="Chaînette Longue CD"></div>
+      <div class="card-body">
+        <h3>Chaînette Longue CD</h3>
+        <div class="price">5 000 FCFA</div>
+        <div class="price-alt">Acier inoxydable</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Cha%C3%AEnette%20Longue%20CD%20(5%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/lobz5mM.jpeg" alt="Chaînette Longue GG"></div>
+      <div class="card-body">
+        <h3>Chaînette Longue GG</h3>
+        <div class="price">5 000 FCFA</div>
+        <div class="price-alt">Acier inoxydable</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Cha%C3%AEnette%20Longue%20GG%20(5%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/vGHUl9J.jpeg" alt="Chaînette Longue LV"></div>
+      <div class="card-body">
+        <h3>Chaînette Longue LV</h3>
+        <div class="price">5 000 FCFA</div>
+        <div class="price-alt">Acier inoxydable</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20la%20Cha%C3%AEnette%20Longue%20LV%20(5%20000%20FCFA).%20Est-elle%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRACELETS PERLES -->
+<section class="section" id="bracelets">
+  <div class="section-title"><h2>Bracelets Perlés</h2></div>
+  <div class="section-subtitle">Faits main, plusieurs coloris</div>
+  <div class="price-note">
+    1 500 FCFA/pièce &nbsp;|&nbsp; 9 000 FCFA la douzaine
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/PRf1eG9.jpeg" alt="Bracelet Perlé"></div>
+      <div class="card-body">
+        <h3>Bracelet Perlé</h3>
+        <div class="price">1 500 FCFA / pièce</div>
+        <div class="price-alt">9 000 FCFA la douzaine</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Bracelet%20Perl%C3%A9%20(1%20500%20FCFA%2Fpi%C3%A8ce%20-%209%20000%20FCFA%2Fdouzaine).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap"><img src="https://i.imgur.com/UkiP1sR.jpeg" alt="Bracelet Perlé"></div>
+      <div class="card-body">
+        <h3>Bracelet Perlé</h3>
+        <div class="price">1 500 FCFA / pièce</div>
+        <div class="price-alt">9 000 FCFA la douzaine</div>
+        <a class="order-btn" href="https://wa.me/242056659651?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20Bracelet%20Perl%C3%A9%20(1%20500%20FCFA%2Fpi%C3%A8ce%20-%209%20000%20FCFA%2Fdouzaine).%20Est-il%20disponible%20%3F" target="_blank">Commander</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">M·D STYLE</div>
+  <div class="contact">WhatsApp commande : <span>05 665 96 51</span></div>
+  <div class="contact">Appel : <span>06 479 67 79</span></div>
+  <div class="location">BRAZZAVILLE — RÉPUBLIQUE DU CONGO</div>
+</footer>
+
+<a class="float-whatsapp" href="https://wa.me/242056659651" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.49.738 4.81 2.012 6.748L4.5 28l6.42-1.45A11.93 11.93 0 0 0 16.001 27C22.629 27 28 21.627 28 15S22.629 3 16.001 3zm6.94 17.06c-.293.823-1.7 1.578-2.34 1.678-.6.094-1.36.134-2.197-.138-.5-.16-1.14-.374-1.96-.733-3.45-1.49-5.7-4.95-5.873-5.18-.173-.23-1.41-1.873-1.41-3.573 0-1.7.893-2.534 1.21-2.88.317-.346.69-.433.92-.433.23 0 .46.002.66.012.213.01.498-.08.78.595.293.7.993 2.42 1.08 2.6.087.18.146.39.03.626-.117.236-.176.382-.346.587-.17.205-.358.46-.512.617-.17.176-.347.366-.15.72.198.353.882 1.45 1.892 2.347 1.3 1.158 2.396 1.516 2.75 1.687.353.17.56.146.766-.088.207-.234.882-1.026 1.118-1.38.235-.353.47-.293.79-.176.323.117 2.04.962 2.39 1.137.353.176.587.264.673.41.087.146.087.84-.206 1.66z"/>
+  </svg>
+</a>
+
+</body>
+</html>
